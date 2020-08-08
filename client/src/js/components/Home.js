@@ -28,7 +28,6 @@ const mystyle = ({
     color: "white",
     letterSpacing: "0.4px",
     fontWeight: "500",
-    marginLeft: "15px",
     },
     info: {
         paddingTop: "200px",

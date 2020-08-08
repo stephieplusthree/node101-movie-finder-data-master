@@ -5,7 +5,7 @@ import netflixLogo from '../../img/netflix-logo.png';
 
 function Nav() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-white bg-transparent">
+        <nav className="navbar navbar-expand-lg navbar-white">
             <a className="navbar-brand" href="#"><img height="75" src={netflixLogo} /></a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -50,7 +50,18 @@ function Nav() {
             </div>
         </nav>
     );
- 
+    const style = ({
+        container: {
+            padding: "100px",
+            color: "white",
+            background: "black",
+            marginTop: "60px",
+            position: "fixed",
+            height: "68px",
+            width: "100%",
+
+        }
+    })
 };
 
 export default Nav;

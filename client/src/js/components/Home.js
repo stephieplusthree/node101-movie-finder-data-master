@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import logo from '../../img/logo.png';
 import wallpaper from '../../img/wallpaper.jpg';
 
+
 function Home() {
     return (
         <div class="jumbotron jumbotron-fluid bg-transparent" style={mystyle.container}>
             <div class="info" style={mystyle.info}>
                 <img src={logo} />
                 <p style={mystyle.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                <button type="button" class="btn btn-danger">Play</button>
-                <button type="button" class="btn btn-danger">More Info</button>
+                <button type="button" class="btn btn-danger btn-lg" style={mystyle.btn}><i class="fa fa-play" style={mystyle.icon}></i>Play</button>
+                <button type="button" class="btn btn-danger btn-lg" style={mystyle.btn}><i class="fa fa-info-circle" style={mystyle.icon}></i>More Info</button>
             </div>
         </div>
     );
@@ -37,9 +38,13 @@ const mystyle = ({
     },
     description: {
         paddingTop: "50px",
-        paddingBottom: "50px",
+        paddingBottom: "100px",
+    },
+    icon: {
+        marginRight: "10.5px"
+    },
+    btn: {
+        marginBottom: "100px"
     }
-    
-
 })
 export default Home;

@@ -59,7 +59,10 @@ function Nav() {
             position: "fixed",
             height: "68px",
             width: "100%",
-
+            justifyContent: "space-between",
+        }, 
+        icon: {
+            marginLeft: "60px",
         }
     })
 };

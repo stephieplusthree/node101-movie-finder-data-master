@@ -9,6 +9,7 @@ import Movies from './js/components/Movies';
 import Latest from './js/components/Latest';
 import MyList from './js/components/MyList';
 import Footer from './js/components/Footer';
+import ContentRow from './js/components/ContentRow';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/latest" exact component={Latest} />
           <Route path="/myList" exact component={MyList} />
         </Switch>
+        <ContentRow category="Latest Releases" />
         <Footer />
       </div>
     </Router>

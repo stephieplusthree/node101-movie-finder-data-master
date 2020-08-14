@@ -1,5 +1,6 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { jsx, css } from '@emotion/core';
+import React, { useState, useCallback } from 'react';
+// import { jsx, css } from '@emotion/core';
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import one from '../../img/one.jpg';
 import two from '../../img/two.jpg';
@@ -10,13 +11,18 @@ import six from '../../img/six.jpg';
 
 const content = [one, two, three, four, five, six]
 
-const ContentRow = ({ category }) => {
+const ContentRow = ({ category, setActive }) => {
     const [hovered, setHovered] = useState(false)
 
     const handleHover = useCallback(e => {
         e.type === 'mouseenter'
           ? setHovered(e.target.getAttribute('data-img'))
           : setHovered(false)
+      }, [])
+
+    const getPos = useCallback(e => {
+        const pos = e.target.parentElement.getBoundingClientRect()
+        setActive({ category, pos })
       }, [])
 
     return (
@@ -53,7 +59,7 @@ const ContentRow = ({ category }) => {
                 {img === hovered && (
                 <div className="content" style={style.content}>
                     <i className="fa fa-play" type="play" style={style.iconplay} />
-                    <i className="fa fa-info-circle" type="info-circle" style={style.icon} />
+                    <i className="fa fa-info-circle" type="info-circle" onClick={getPos} style={style.icon} />
                 </div>
                 )}
 
@@ -108,25 +114,6 @@ const ContentRow = ({ category }) => {
     }
     
   `
-
-// const ContentRow = ({ category }) => {
-//     return (
-//         <div className="ContentRow" style={contentRow}>
-//             <div>
-//                 <h2 style={style.genre}>{category}</h2>
-//                 <div style={style.blockWrapper}>
-//                     {content.map(img => (
-//                         <ul>
-//                             <li><i class="fa fa-play" aria-hidden="true"></i></li>
-//                             <li><i class="fa fa-info-circle" aria-hidden="true"></i></li>
-//                         </ul>
-//                     <img key={img} src={img} style={style.contentBlock} />
-//                     ))}
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
 
 const style = ({
     contentRow: {

@@ -1,38 +1,102 @@
-import React from 'react';
-import Nav from './js/components/Nav';
-import FirstPage from './js/components/FirstPage';
-import SecondPage from './js/components/SecondPage';
-import ThirdPage from './js/components/ThirdPage';
-import Home from './js/components/Home';
-import TVShows from './js/components/TVShows';
-import Movies from './js/components/Movies';
-import Latest from './js/components/Latest';
-import MyList from './js/components/MyList';
-import Footer from './js/components/Footer';
-import ContentRow from './js/components/ContentRow';
+import React, { useState } from 'react';
+import { Global, css, jsx } from '@emotion/core';
+import Navbar from '../src/js/components/Navbar';
+import Footer from '../src/js/components/Footer';
+import Home from '../src/js/components/Home';
+import ContentRow from '../src/js/components/ContentRow';
+import DetailPane from '../src/js/components/DetailPane';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-function App() {
-  return (
-    <Router>
-      <div classNameName="App">
-        <Nav />
-        <Switch>
-          <Route path="/firstPage" exact component={FirstPage} />
-          <Route path="/secondPage" exact component={SecondPage} />
-          <Route path="/thirdPage" exact component={ThirdPage} />
-          <Route path="/home" exact component={Home} />
-          <Route path="/tVShows" exact component={TVShows} />
-          <Route path="/movies" exact component={Movies} />
-          <Route path="/latest" exact component={Latest} />
-          <Route path="/myList" exact component={MyList} />
-        </Switch>
-        <ContentRow category="Latest Releases" />
-        <Footer />
-      </div>
-    </Router>
-  );
+const initalRow = {
+  category: '',
+  pos: { top: 0, bottom: 0 }
 }
 
+/**
+ * @function App
+ */
+
+const App = () => {
+  const [activeRow, setActiveRow] = useState(initalRow)
+
+  const {
+    category,
+    pos: { top, bottom }
+  } = activeRow
+
+  const setActive = activeRow => {
+    setActiveRow(activeRow) 
+  }
+
+  console.log(activeRow)
+
+  return (
+    <>
+      <Global styles={GlobalCSS} />
+      <Navbar />
+
+      <Home />
+
+      <ContentRow category="Latest Releases" setActive={setActive} />
+
+      <DetailPane />
+      <Footer />
+    </>
+  )
+}
+
+const GlobalCSS = css`
+  * {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  html,
+  body,
+  .app {
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+  }
+
+  body {
+    background: #151515;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  p {
+    font-size: 20px;
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+
+  button {
+    background-color: rgba(51, 51, 51, 0.8);
+    border: 1px solid white;
+    padding: 0.75em 2.3em;
+    border-radius: 0.2vw;
+    box-shadow: none;
+    font-size: 1.1vw;
+    color: white;
+    margin-right: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+
+  .Icon {
+    font-size: 18.5px;
+    cursor: pointer;
+    color: white;
+  }
+`
+
 export default App;
+

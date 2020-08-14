@@ -154,7 +154,8 @@ const style = ({
     iconplay: {
         fontSize: "25px",
         color: "red",
-        marginRight: "20px"
+        marginRight: "20px",
+        marginTop: "25px"
     },
     icon: {
         fontSize: "25px",

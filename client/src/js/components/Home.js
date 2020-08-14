@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from '../../img/logo.jpg';
+import logo from '../../img/logo.png';
 import wallpaper from '../../img/wallpaper.jpg';
 
 
-function Home() {
+function Home({ children }) {
     return (
         <div className="jumbotron jumbotron-fluid bg-transparent" style={mystyle.container}>
             <div className="info" style={mystyle.info}>
@@ -12,6 +12,7 @@ function Home() {
                 <button type="button" className="btn btn-danger btn-lg" style={mystyle.btn}><i className="fa fa-play" style={mystyle.icon}></i>Play</button>
                 <button type="button" className="btn btn-danger btn-lg" style={mystyle.btn}><i className="fa fa-info-circle" style={mystyle.icon}></i>More Info</button>
             </div>
+            { children }
         </div>
     );
 }
@@ -23,7 +24,7 @@ const mystyle = ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     width: "100%",
-    height: "115vh",
+    height: "130vh",
     top: "0",
     color: "white",
     letterSpacing: "0.4px",

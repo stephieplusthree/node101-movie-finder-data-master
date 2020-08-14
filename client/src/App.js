@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
 import { Global, css, jsx } from '@emotion/core';
 import Navbar from '../src/js/components/Navbar';
 import Footer from '../src/js/components/Footer';
@@ -11,9 +11,18 @@ const initalRow = {
   pos: { top: 0, bottom: 0 }
 }
 
+const categories = [
+  "TV Shows",
+  "Action",
+  "Drama",
+  "Comedy",
+  "Documentary",
+  "Sci-Fi",
+  "Reality"
+]
+
 // @function App
  
-
 const App = () => {
   const [activeRow, setActiveRow] = useState(initalRow)
 
@@ -23,8 +32,11 @@ const App = () => {
     pos: { top, bottom }
   } = activeRow
 
+  const navRef = createRef()
+
   useEffect(() => {
     if(!category) return
+    const navHeight = navRef.current.offsetHeight
 
     window.scrollTo({
       top: top + window.scrollY,
@@ -40,11 +52,13 @@ const App = () => {
   return (
     <>
       <Global styles={GlobalCSS} />
-      <Navbar />
+      <Navbar ref={navRef} />
 
       <Home />
     
-      <ContentRow category="Latest Releases" setActive={setActive} />
+      {categories.slice(1).map(category => (
+        <ContentRow key={category} category={category} setActive={setActive} />
+      ))}
 
       <DetailPane category={category} pos={bottom} setActive={setActive} />
       <Footer />

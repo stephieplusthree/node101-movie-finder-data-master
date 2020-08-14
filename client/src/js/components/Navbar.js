@@ -22,7 +22,6 @@ const Navbar = forwardRef((props, ref) => {
 
   return (
     <nav
-        className="navbar navbar-white"
       ref={ref}
       css={[
         NavbarCSS,
@@ -40,9 +39,9 @@ const Navbar = forwardRef((props, ref) => {
             `
       ]}
     >
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <a className="navbar-brand" href="/">
+      <ul className="nav-links">
+        <li>
+          <a href="/">
             <img height="100" src={netflixLogo} />
           </a>
         </li>
@@ -54,11 +53,11 @@ const Navbar = forwardRef((props, ref) => {
         ))}
       </ul>
 
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
+      <ul className="right">
+        <li>
           <i className="fa fa-search"></i>
         </li>
-        <li className="nav-item">
+        <li>
           <i className="fa fa-bell"></i>
         </li>
       </ul>
@@ -67,21 +66,21 @@ const Navbar = forwardRef((props, ref) => {
 })
 
 const NavbarCSS = css`
-  position: fixed;
-  height: 68px;
+  /* position: fixed; */
+  min-height: 68px;
   z-index: 99;
   width: 100%;
   padding: 0 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: white;
   ul {
     display: flex;
     align-items: center;
   }
   li {
     margin-right: 100px;
-    display: flex;
   }
   a {
     font-size: 15px;
@@ -100,6 +99,13 @@ const NavbarCSS = css`
       font-size: 22px;
       display: flex;
     }
+  }
+  ul.nav-links {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
   }
 `
 

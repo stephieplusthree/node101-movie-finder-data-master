@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Global, css, jsx } from '@emotion/core';
 import Navbar from '../src/js/components/Navbar';
 import Footer from '../src/js/components/Footer';
@@ -11,23 +11,31 @@ const initalRow = {
   pos: { top: 0, bottom: 0 }
 }
 
-/**
- * @function App
- */
+// @function App
+ 
 
 const App = () => {
   const [activeRow, setActiveRow] = useState(initalRow)
 
+  //create variables to grab from activeRow
   const {
     category,
     pos: { top, bottom }
   } = activeRow
 
-  const setActive = activeRow => {
-    setActiveRow(activeRow) 
-  }
+  useEffect(() => {
+    if(!category) return
 
-  console.log(activeRow)
+    window.scrollTo({
+      top: top + window.scrollY,
+      left: 0,
+      behavior: "smooth"
+    })
+  }, [category])
+
+  const setActive = activeRow => {
+    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initalRow) 
+  }
 
   return (
     <>
@@ -35,10 +43,10 @@ const App = () => {
       <Navbar />
 
       <Home />
-
+    
       <ContentRow category="Latest Releases" setActive={setActive} />
 
-      <DetailPane />
+      <DetailPane category={category} pos={bottom} setActive={setActive} />
       <Footer />
     </>
   )

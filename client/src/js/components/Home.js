@@ -23,7 +23,7 @@ const mystyle = ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     width: "100%",
-    height: "98vh",
+    height: "115vh",
     top: "0",
     color: "white",
     letterSpacing: "0.4px",

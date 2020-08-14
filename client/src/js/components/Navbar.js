@@ -22,7 +22,7 @@ const Navbar = forwardRef((props, ref) => {
 
   return (
     <nav
-        className="navbar navbar-expand-lg navbar-white"
+        className="navbar navbar-white"
       ref={ref}
       css={[
         NavbarCSS,
@@ -43,7 +43,7 @@ const Navbar = forwardRef((props, ref) => {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <a className="navbar-brand" href="/">
-            <img height="75" src={netflixLogo} />
+            <img height="100" src={netflixLogo} />
           </a>
         </li>
 

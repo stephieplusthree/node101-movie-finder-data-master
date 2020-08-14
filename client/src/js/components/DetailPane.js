@@ -1,9 +1,9 @@
 import React from 'react';
 // import { css, jsx } from '@emotion/core';
 
-const DetailPane = ({ category = true }) => category && (
+const DetailPane = ({ category, pos, setActive }) => category && (
     <div style={style.container}>
-        <li><i className="fa fa-times"></i></li>
+        <li style={style.li}><i className="fa fa-times" onClick={setActive}></i></li>
     </div>
 )
 
@@ -14,8 +14,10 @@ const style = ({
         width: "100%",
         position: "absolute",
         border: "2px solid white",
+        top: "${pos + scrollY}px",
+        listStyleType: "none",
     },
-    icon: {
+    li: {
         fontSize: "32px",
         color: "white",
         position: "absolute",

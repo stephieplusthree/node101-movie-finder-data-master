@@ -5,6 +5,7 @@ import Footer from '../src/js/components/Footer';
 import Home from '../src/js/components/Home';
 import ContentRow from '../src/js/components/ContentRow';
 import DetailPane from '../src/js/components/DetailPane';
+// import ContentBlock from '../src/js/components/ContentBlock';
 
 const initalRow = {
   category: '',
@@ -60,7 +61,7 @@ const App = () => {
         <ContentRow key={category} category={category} setActive={setActive} />
       ))}
 
-      <DetailPane category={category} pos={bottom} setActive={setActive} />
+      <DetailPane category={category} top={bottom + window.scrollY} setActive={setActive} />
       <Footer />
     </>
   )

@@ -1,8 +1,10 @@
 import React from 'react';
+import DetailPaneNav from './DetailPaneNav';
 // import { css, jsx } from '@emotion/core';
 
 const DetailPane = ({ category, pos, setActive }) => category && (
     <div style={style.container}>
+        <DetailPaneNav />
         <li style={style.li}><i className="fa fa-times" onClick={setActive}></i></li>
     </div>
 )

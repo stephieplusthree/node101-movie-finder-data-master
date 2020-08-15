@@ -155,7 +155,7 @@ const style = ({
         fontSize: "25px",
         color: "red",
         marginRight: "20px",
-        marginTop: "25px"
+        marginBottom: "25px"
     },
     icon: {
         fontSize: "25px",

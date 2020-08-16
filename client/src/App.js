@@ -1,33 +1,33 @@
-import React, { useState, useEffect, createRef } from 'react';
+/** @jsx jsx */
+import React, { useState, useEffect, createRef } from 'react'
 import { Global, css, jsx } from '@emotion/core';
 import Navbar from '../src/js/components/Navbar';
 import Footer from '../src/js/components/Footer';
 import Home from '../src/js/components/Home';
 import ContentRow from '../src/js/components/ContentRow';
 import DetailPane from '../src/js/components/DetailPane';
-// import ContentBlock from '../src/js/components/ContentBlock';
 
-const initalRow = {
+const initialRow = {
   category: '',
   pos: { top: 0, bottom: 0 }
 }
 
 const categories = [
-  "TV Shows",
-  "Action",
-  "Drama",
-  "Comedy",
-  "Documentary",
-  "Sci-Fi",
-  "Reality"
+  'TV Shows',
+  'Action',
+  'Drama',
+  'Comedy',
+  'Documentary',
+  'Sci-Fi',
+  'Reality'
 ]
 
-// @function App
- 
+/**
+ * @function App
+ */
 const App = () => {
-  const [activeRow, setActiveRow] = useState(initalRow)
+  const [activeRow, setActiveRow] = useState(initialRow)
 
-  //create variables to grab from activeRow
   const {
     category,
     pos: { top, bottom }
@@ -35,35 +35,41 @@ const App = () => {
 
   const navRef = createRef()
 
+  const setActive = activeRow => {
+    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
+  }
+
   useEffect(() => {
-    if(!category) return
+    if (!category) return
     const navHeight = navRef.current.offsetHeight
 
     window.scrollTo({
-      top: top + window.scrollY,
+      top: top + window.scrollY - navHeight,
       left: 0,
-      behavior: "smooth"
+      behavior: 'smooth'
     })
   }, [category])
 
-  const setActive = activeRow => {
-    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initalRow) 
-  }
-
   return (
-    <>
+    <React.Fragment>
       <Global styles={GlobalCSS} />
       <Navbar ref={navRef} />
 
-      <Home />
-    
+      <Home></Home>
+        <ContentRow category={categories[0]} setActive={setActive} />
+      
+
       {categories.slice(1).map(category => (
         <ContentRow key={category} category={category} setActive={setActive} />
       ))}
 
-      <DetailPane category={category} top={bottom + window.scrollY} setActive={setActive} />
+      <DetailPane 
+        category={category} 
+        top={bottom + window.scrollY} 
+        setActive={setActive} 
+      />
       <Footer />
-    </>
+    </React.Fragment>
   )
 }
 
@@ -114,12 +120,9 @@ const GlobalCSS = css`
     letter-spacing: 0.4px;
   }
 
-  .Icon {
+  i {
     font-size: 18.5px;
-    cursor: pointer;
-    color: white;
   }
 `
 
-export default App;
-
+export default App

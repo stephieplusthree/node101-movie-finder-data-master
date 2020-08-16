@@ -1,50 +1,60 @@
+/** @jsx jsx */
 import React from 'react';
-import logo from '../../img/logo.png';
+import { css, jsx } from '@emotion/core';
 import wallpaper from '../../img/wallpaper.jpg';
+import logo from '../../img/logo.png';
 
+/**
+ * @function Home
+ */
+const Home = ({ children }) => (
+  <div css={JumbotronCSS}>
+    <div className="synopsis">
+      <img src={logo} />
 
-function Home({ children }) {
-    return (
-        <div className="jumbotron jumbotron-fluid bg-transparent" style={mystyle.container}>
-            <div className="info" style={mystyle.info}>
-                <img alt="logo" src={logo} />
-                <p style={mystyle.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                <button type="button" className="btn btn-danger btn-lg" style={mystyle.btn}><i className="fa fa-play" style={mystyle.icon}></i>Play</button>
-                <button type="button" className="btn btn-danger btn-lg" style={mystyle.btn}><i className="fa fa-info-circle" style={mystyle.icon}></i>More Info</button>
-            </div>
-            { children }
-        </div>
-    );
-}
+      <p>
+        All he wants to do is leave town and start over. But first, he needs to
+        deal with his ex, his new roomie and the enemies who want him dead.
+      </p>
 
-const mystyle = ({
-    container: {
-    position: "relative",
-    backgroundImage: `url(${wallpaper})`,
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "cover",
-    width: "100%",
-    height: "130vh",
-    top: "0",
-    color: "white",
-    letterSpacing: "0.4px",
-    fontWeight: "500",
-    },
-    info: {
-        paddingTop: "200px",
-        paddingLeft: "60px",
-        maxWidth: "500px",
-        color: "white",
-    },
-    description: {
-        paddingTop: "50px",
-        paddingBottom: "100px",
-    },
-    icon: {
-        marginRight: "10.5px"
-    },
-    btn: {
-        marginBottom: "100px"
+      <button type="button">Play</button>
+      <button type="button">More Info</button>
+     
+    </div>
+
+    {children}
+  </div>
+)
+
+const JumbotronCSS = css`
+  position: relative;
+  background-image: url('${wallpaper}');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 98vh;
+  top: 0;
+
+  .synopsis {
+    padding-top: 200px;
+    padding-left: 60px;
+    max-width: 500px;
+    color: white;
+    padding-left: 60px;
+
+    img {
+      width: 100%;
     }
-})
+
+   .Icon {
+      margin-right: 10.5px;
+      font-size: 18px;
+    }
+  }
+
+  .ContentRow {
+    position: absolute;
+    bottom: 20px;
+  }
+`
 export default Home;

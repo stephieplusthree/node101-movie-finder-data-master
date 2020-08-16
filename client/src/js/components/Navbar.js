@@ -1,11 +1,15 @@
+/** @jsx jsx */
 import React, { useState, useEffect, forwardRef } from 'react';
 import { css, jsx } from '@emotion/core';
-import netflixLogo from '../../img/netflix-logo.jpg'
+import netflixLogo from '../../img/netflix-logo.png';
+import Icon from './Icon';
+// import Button from './Button';
 
 const leftLinks = ['Home', 'TV Shows', 'Movies', 'Latest', 'My List']
 
-//Navbar function
-
+/**
+ * @function Navbar
+ */
 const Navbar = forwardRef((props, ref) => {
   const [scrolled, setScrolled] = useState(false)
 
@@ -39,15 +43,15 @@ const Navbar = forwardRef((props, ref) => {
             `
       ]}
     >
-      <ul className="nav-links">
+      <ul>
         <li>
           <a href="/">
-            <img height="100" src={netflixLogo} />
+            <img height="75" src={netflixLogo} />
           </a>
         </li>
 
         {leftLinks.map(link => (
-          <li className="nav-item" key={link}>
+          <li key={link}>
             <a href="/">{link}</a>
           </li>
         ))}
@@ -55,10 +59,10 @@ const Navbar = forwardRef((props, ref) => {
 
       <ul className="right">
         <li>
-          <i className="fa fa-search"></i>
+          <Icon type="search" />
         </li>
         <li>
-          <i className="fa fa-bell"></i>
+          <Icon type="bell-o" />
         </li>
       </ul>
     </nav>
@@ -66,27 +70,25 @@ const Navbar = forwardRef((props, ref) => {
 })
 
 const NavbarCSS = css`
-  /* position: fixed; */
-  min-height: 68px;
+  position: fixed;
+  height: 68px;
   z-index: 99;
   width: 100%;
   padding: 0 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
   ul {
     display: flex;
     align-items: center;
   }
   li {
-    margin-right: 100px;
+    margin-right: 20px;
   }
   a {
     font-size: 15px;
     letter-spacing: 0.5px;
     color: #e5e5e5;
-    display: flex;
   }
   a.active {
     color: white;
@@ -97,30 +99,8 @@ const NavbarCSS = css`
       color: white;
       cursor: pointer;
       font-size: 22px;
-      display: flex;
     }
-  }
-  ul.nav-links {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
   }
 `
 
-export default Navbar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Navbar

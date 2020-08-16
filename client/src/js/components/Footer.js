@@ -1,17 +1,16 @@
-import React from 'react';
+/** @jsx jsx */
+import React from 'react'
+import { css, jsx } from '@emotion/core'
 
-function Footer() {
-    return (
-        <h1 style={style.container}>Footer</h1>
-    );
-}
+const Footer = () => (
+  <footer
+    css={css`
+      padding: 100px;
+      color: white;
+      background: black;
+      margin-top: 60px;
+    `}
+  ></footer>
+)
 
-const style = ({
-    container: {
-        padding: "100px",
-        color: "white",
-        background: "black",
-        marginTop: "60px",
-    }
-})
-export default Footer;
+export default Footer

@@ -2,9 +2,9 @@
 import React, { useState, useCallback } from 'react'
 import { css, jsx } from '@emotion/core'
 
-
- //function ContentBlock
-
+/**
+ * @function ContentBlock
+ */
 const ContentBlock = ({ children, img }) => {
   const [hovered, setHovered] = useState(false)
 
